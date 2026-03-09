@@ -91,5 +91,13 @@ const buttonToggleHandler = (id) => {
     activeBtn.classList.add('btn-primary');
 }
 
+const issue_Search = () => {
+    const searchText = document.getElementById("search_input").value;
+
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`)
+    .then(res => res.json())
+    .then(data => generateCard(data.data));
+}
+
 buttonToggleHandler('btn-all');
 loadAll_issues();
