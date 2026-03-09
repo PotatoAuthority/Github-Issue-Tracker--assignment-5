@@ -17,9 +17,40 @@
     <!-- style -->
     <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-    <section>
-
+<body class="mainfont min-h-screen flex items-center justify-center">
+    <section class="w-full max-w-lg bg-base-200 mx-auto bg-white py-8">
+        <div class="title-image flex flex-col items-center justify-center">
+            <img src="./asset/github-logo.png" alt="">
+            <h2 class="font-semibold text-[24px]">GitHub Issues Tracker</h2>
+            <p class="text-[#64748B]">Sign in to manage your issues</p>
+        </div>
+        <div class="card bg-base-100 w-full max-w-sm shrink-0 mx-auto">
+            <div class="card-body">
+                <fieldset class="fieldset">
+                <label class="text-[16px] text-[#1F2937] font-medium">Username</label>
+                <input id="userID" type="email" class="input" placeholder="Username" />
+                <p class="text-[14px] text-[#4A00FF]">Default: admin</p>
+                <label class="text-[16px] text-[#1F2937] font-medium">Password</label>
+                <input id="pass" type="password" class="input" placeholder="Password" />
+                <p class="text-[14px] text-[#4A00FF]">Default: admin123</p>
+                <button onclick="login()" class="btn btn-primary mt-4">Sign In</button>
+                </fieldset>
+                <div class="flex items-center w-full gap-3">
+                    <div class="flex-grow h-px bg-gray-300"></div>
+                    <span class="text-gray-500 text-sm whitespace-nowrap">OR</span>
+                    <div class="flex-grow h-px bg-gray-300"></div>
+                </div>
+                 <div class="demo text-center max-w-sm w-full shrink-0 mx-auto">
+                    <p>Demo Credentials:</p>
+                    <div class="bg-gray-300 py-6 rounded-lg">
+                        <p>Username: admin</p>
+                        <p>Password: admin123</p>
+                    </div>
+                 </div>
+            </div>
+        </div>
     </section>
+
+    <script src="./index.js"></script>
 </body>
 </html>
