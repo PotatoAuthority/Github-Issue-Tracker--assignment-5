@@ -25,6 +25,7 @@ const load_closed = () =>{
 
 const generateCard = (issue_in) =>{
     const issueCounter = document.getElementById('counter');
+    
 
     console.log(issue_in.data);
     const container = document.getElementById('issue_container');
@@ -33,6 +34,7 @@ const generateCard = (issue_in) =>{
 
     issue_in.forEach(elem =>{
         const issue_card = document.createElement('div');
+        issue_card.onclick = () => openIssueModal(elem);
 
         const createdDate = elem.createdAt;
         const date = new Date(createdDate);
@@ -97,6 +99,60 @@ const issue_Search = () => {
     fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`)
     .then(res => res.json())
     .then(data => generateCard(data.data));
+}
+
+const openIssueModal = (elem) => {
+
+    const createdDate = new Date(elem.createdAt);
+    const formattedDate = `${createdDate.getMonth()+1}/${createdDate.getDate()}/${createdDate.getFullYear()}`;
+
+    const modalContainer = document.getElementById("modal_container");
+
+    modalContainer.innerHTML = `
+    
+    <dialog id="issue_modal" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+
+        <h3 class="font-bold text-[24px] text-[#1F2937]">${elem.title}</h3>
+
+        <div class="flex items-center gap-3 my-2">
+            <div>${elem.status === 'open'? `<div class="badge badge-success">OPENED</div>`: `<div class="badge badge-primary">CLOSED</div>`}</div>
+            <p class="text-[#64748B] text-[13px]"> • ${elem.status === 'open'? 'OPENED' : 'CLOSED'} by ${elem.author} • </p>
+            <p class="text-[#64748B] text-[13px]">${formattedDate}</p>
+        </div>
+
+        <div class="flex flex-wrap gap-1 mb-3">
+        ${elem.labels.map(label => `<div class="badge badge-outline badge-error text-[12px] font-medium p-1">${label}</div>`).join("")}
+        </div>
+
+        <p class="mb-4 text-[#64748B] text-[16px]">${elem.description}</p>
+
+        <div class="flex gap-[100px] md:gap-[200px] bg-[#F8FAFC] p-4 rounded-lg">
+
+            <div class="flex flex-col">
+                <p class="text-[#64748B] text-[16px]">Assignee:</p>
+                <p>${elem.assignee}</p>
+            </div>
+
+            <div class="flex flex-col">
+                <p class="text-[#64748B] text-[16px]">Priority:</p>
+                <div>${elem.priority === 'high'? `<div class="badge badge-soft badge-error">HIGH</div>`: elem.priority === 'medium'? `<div class="badge badge-soft badge-warning">MEDIUM</div>` : `<div class="badge badge-soft badge-success">LOW</div>`}</div>
+            </div>
+
+        </div>
+
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+
+      </div>
+    </dialog>
+    
+    `;
+
+    document.getElementById("issue_modal").showModal();
 }
 
 buttonToggleHandler('btn-all');
