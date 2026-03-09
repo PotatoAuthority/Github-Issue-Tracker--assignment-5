@@ -37,9 +37,12 @@ const generateCard = (issue_in) =>{
                     </div>
                     
                     <div class="flex flex-wrap gap-1">${elem.labels.map(label => `<div class="badge badge-outline badge-error text-[12px] font-medium p-1">${label}</div>`).join("")}</div>
+
+                    <div>
                     <hr class="mt-4 mb-4">
                     <p class="text-[12px] text-[#64748B] line-clamp-2 mb-3">#1 by ${elem.author}</p>
                     <p class="text-[12px] text-[#64748B] line-clamp-2 ">${formattedDate}</p>
+                    </div>
                     
                    
         `;
@@ -53,6 +56,7 @@ const generateCard = (issue_in) =>{
         else{
             issue_card.classList.add('border-t-4', 'border-t-[#A855F7]');
         }
+        issue_card.classList.add('flex', 'flex-col', 'justify-between');
         container.append(issue_card);
         counter++;
 
