@@ -63,7 +63,7 @@
     </section>
     
     <section class="w-[90%] md:w-[70%] max-w-[1110px] mx-auto mt-3 md:mt-4">
-        <div class="tabs bg-white p-3 md:p-6 gap-6 rounded-lg shadow-sm flex g-2 md:g-0 flex-col md:flex-row justify-between">
+        <div class="tabs bg-white p-3 md:p-6 gap-6 rounded-tr-lg rounded-tl-lg shadow-sm flex g-2 md:g-0 flex-col md:flex-row justify-between">
             <div class="left flex items-center justify-center gap-2">
                 <img class=" border-[9px] border-[#ECE4FF] rounded-full" src="./asset/Aperture.png" alt="">
                 <div class="text">
@@ -84,6 +84,39 @@
             </div>
         </div>
     </section>
+    <section class="w-[90%] md:w-[70%] max-w-[1110px] mx-auto">
+        <div id="issue_container" class="tabs bg-[#FBFBFB] p-3 md:p-6 gap-6 rounded-br-lg rounded-bl-lg shadow-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div class="card">
+                <div class="top flex justify-between items-center">
+                    <img src="./asset/Open-Status.png" alt="">
+                    <div class="badge badge-error">HIGH</div>
+                </div>
+                <id>id</id>
+                <h2>Title</h2>
+                <p>Description</p>
+                <p>Status</p>
+            </div>
+        </div>
+    </section>
     
+<!-- {
+    "id": 1,
+    "title": "Fix navigation menu on mobile devices",
+    "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
+    "status": "open",
+    "labels": [
+        "bug",
+        "help wanted"
+    ],
+    "priority": "high",
+    "author": "john_doe",
+    "assignee": "jane_smith",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-15T10:30:00Z"
+} -->
+
+
+
+    <script src="./all_issues.js"></script>
 </body>
 </html>
