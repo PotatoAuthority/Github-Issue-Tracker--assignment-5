@@ -1,11 +1,26 @@
 const loadAll_issues = () =>{
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
     .then(res => res.json())
-    .then(issue => generateCard(issue));
+    .then(issue => generateCard(issue.data));
 }
 
 const load_open = () =>{
+    fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
+    .then(res => res.json())
+    .then(issue => {
+        const openIssues = issue.data.filter(elem => elem.status === "open");
+        console.log('open', openIssues);
+        generateCard(openIssues);
+    });
+}
 
+const load_closed = () =>{
+    fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
+    .then(res => res.json())
+    .then(issue => {
+        const closedIssues = issue.data.filter(elem => elem.status === "closed");
+        generateCard(closedIssues);
+    });
 }
 
 const generateCard = (issue_in) =>{
@@ -16,14 +31,14 @@ const generateCard = (issue_in) =>{
     container.innerHTML = '';
     let counter = 0
 
-    issue_in.data.forEach(elem =>{
+    issue_in.forEach(elem =>{
         const issue_card = document.createElement('div');
 
         const createdDate = elem.createdAt;
         const date = new Date(createdDate);
         const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 
-        console.log(formattedDate); // Output: "1/15/2024"
+        console.log(formattedDate); 
         issue_card.innerHTML = `
         
                     <div class="top flex justify-between items-center mb-3">
@@ -64,4 +79,17 @@ const generateCard = (issue_in) =>{
     issueCounter.innerText = counter;
 }
 
+const buttonToggleHandler = (id) => {
+    const buttons = document.getElementsByClassName('issue-btn');
+    for (let btn of buttons){
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline');
+    }
+
+    const activeBtn = document.getElementById(id);
+    activeBtn.classList.remove('btn-outline');
+    activeBtn.classList.add('btn-primary');
+}
+
+buttonToggleHandler('btn-all');
 loadAll_issues();

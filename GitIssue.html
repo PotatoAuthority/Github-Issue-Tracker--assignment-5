@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>GitHub Issue Tracker</title>
 
     <!-- Daisy -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -55,10 +55,9 @@
 
     <section class="w-[90%] md:w-[70%] max-w-[1110px] mx-auto mt-3 md:mt-14">
         <div class="tabs bg-white p-2 md:p-6 gap-2 rounded-lg shadow-sm justify-center md:justify-start">
-            <button onclick="loadAll_issues()" class="btn btn-primary btn-xs sm:btn-sm md:btn-md  w-[70px] md:w-[120px]">All</button>
-            <button class="btn btn-primary btn-xs sm:btn-sm md:btn-md  w-[70px] md:w-[120px]">Open</button>
-            <button class="btn btn-primary btn-xs sm:btn-sm md:btn-md  w-[70px] md:w-[120px]">Close</button>
-
+            <button id="btn-all" onclick="loadAll_issues(); buttonToggleHandler('btn-all')" class="issue-btn btn btn-primary btn-xs sm:btn-sm md:btn-md w-[70px] md:w-[120px]">All</button>
+            <button id="btn-open" onclick="load_open(); buttonToggleHandler('btn-open')" class="issue-btn btn btn-primary btn-xs sm:btn-sm md:btn-md w-[70px] md:w-[120px]">Open</button>
+            <button id="btn-close" onclick="load_closed(); buttonToggleHandler('btn-close')" class="issue-btn btn btn-primary btn-xs sm:btn-sm md:btn-md w-[70px] md:w-[120px]">Close</button>
         </div>
     </section>
     
