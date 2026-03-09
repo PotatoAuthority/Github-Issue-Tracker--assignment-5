@@ -55,7 +55,7 @@
 
     <section class="w-[90%] md:w-[70%] max-w-[1110px] mx-auto mt-3 md:mt-14">
         <div class="tabs bg-white p-2 md:p-6 gap-2 rounded-lg shadow-sm justify-center md:justify-start">
-            <button class="btn btn-primary btn-xs sm:btn-sm md:btn-md  w-[70px] md:w-[120px]">All</button>
+            <button onclick="loadAll_issues()" class="btn btn-primary btn-xs sm:btn-sm md:btn-md  w-[70px] md:w-[120px]">All</button>
             <button class="btn btn-primary btn-xs sm:btn-sm md:btn-md  w-[70px] md:w-[120px]">Open</button>
             <button class="btn btn-primary btn-xs sm:btn-sm md:btn-md  w-[70px] md:w-[120px]">Close</button>
 
@@ -67,7 +67,7 @@
             <div class="left flex items-center justify-center gap-2">
                 <img class=" border-[9px] border-[#ECE4FF] rounded-full" src="./asset/Aperture.png" alt="">
                 <div class="text">
-                    <h2 class="font-semibold text-[20px]">50 Issues</h2>
+                    <h2 class="font-semibold text-[20px]"><span id="counter"></span> Issues</h2>
                     <p class="text-[#64748B] text-[16px]">Track and manage your project issues</p>
                 </div>
             </div>
@@ -85,11 +85,11 @@
         </div>
     </section>
     <section class="w-[90%] md:w-[70%] max-w-[1110px] mx-auto">
-        <div id="issue_container" class="tabs bg-[#FBFBFB] p-3 md:p-6 gap-6 rounded-br-lg rounded-bl-lg shadow-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div id="issue_container" class="tabs bg-[#FBFBFB] p-3 md:p-6 gap-3 rounded-br-lg rounded-bl-lg shadow-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <div class="card">
                 <div class="top flex justify-between items-center">
-                    <img src="./asset/Open-Status.png" alt="">
-                    <div class="badge badge-error">HIGH</div>
+                    <img src="${elem.status==='open'? './asset/Open-Status.png' :'./asset/Closed- Status .png'}" alt="">
+                    <div>${elem.priority === 'high'? <div class="badge badge-soft badge-error">HIGH</div>: <div class="badge badge-soft badge-success">Success</div>}</div>
                 </div>
                 <id>id</id>
                 <h2>Title</h2>
